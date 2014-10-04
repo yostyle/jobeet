@@ -1,7 +1,14 @@
-Symfony2 - Jobeet - Jour 03 - Le Modèle de Données
+Symfony2 - Jobeet - Jour 04 - Le Contrôleur et la Vue
 ========================
 
-Si vous avez envie d'ouvrir votre éditeur de texte et de faire un peu de PHP, vous serez heureux de savoir qu'aujourd'hui nous allons faire quelques développements. Nous allons définir le modèle de données de Jobeet, utiliser un ORM pour interagir avec la base de données et construire le premier module de l'application. Mais comme Symfony fait beaucoup de travail pour nous, nous aurons un module web pleinement opérationnel sans trop écrire de code PHP.
+Aujourd'hui, nous allons personnaliser le contrôleur Job que nous avons créé. Il possède déjà la plupart du code nous avons besoin pour Jobeet :
+
+* Une page pour lister toutes les offres
+* Une page pour créer une nouvelle offre
+* Une page pour mettre à jour une offre existante
+* Une page pour supprimer une offre
+
+Bien que le code soit prêt à être utilisé tel quel, nous devons modifier les modèles pour correspondre à notre maquette Jobeet.
 
 # Tutoriel
-http://blog.erlem.fr/programmation/developpement-web/framework/40-symfony/102-symfony2-jobeet-jour-03-le-modele-de-donnees
+http://blog.erlem.fr/programmation/developpement-web/framework/40-symfony/103-symfony2-jobeet-jour-04-le-controleur-et-la-vue
