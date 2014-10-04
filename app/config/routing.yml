@@ -1,0 +1,4 @@
+erlem_jobeet:
+    resource: "@ErlemJobeetBundle/Resources/config/routing.yml"
+    prefix:   /
+
