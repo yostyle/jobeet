@@ -1,3 +1,3 @@
-erlem_jobeet_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: ErlemJobeetBundle:Default:index }
+ErlemJobeetBundle_job:
+    resource: "@ErlemJobeetBundle/Resources/config/routing/job.yml"
+    prefix:   /job

@@ -1,0 +1,30 @@
+erlem_job:
+    path:     /
+    defaults: { _controller: "ErlemJobeetBundle:Job:index" }
+
+erlem_job_show:
+    path:     /{id}/show
+    defaults: { _controller: "ErlemJobeetBundle:Job:show" }
+
+erlem_job_new:
+    path:     /new
+    defaults: { _controller: "ErlemJobeetBundle:Job:new" }
+
+erlem_job_create:
+    path:     /create
+    defaults: { _controller: "ErlemJobeetBundle:Job:create" }
+    requirements: { _method: post }
+
+erlem_job_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ErlemJobeetBundle:Job:edit" }
+
+erlem_job_update:
+    path:     /{id}/update
+    defaults: { _controller: "ErlemJobeetBundle:Job:update" }
+    requirements: { _method: post|put }
+
+erlem_job_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ErlemJobeetBundle:Job:delete" }
+    requirements: { _method: post|delete }
