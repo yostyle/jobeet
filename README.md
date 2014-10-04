@@ -1,14 +1,7 @@
-Symfony2 - Jobeet - Jour 04 - Le Contrôleur et la Vue
+Symfony2 - Jobeet - Jour 05 - Le Routage
 ========================
 
-Aujourd'hui, nous allons personnaliser le contrôleur Job que nous avons créé. Il possède déjà la plupart du code nous avons besoin pour Jobeet :
-
-* Une page pour lister toutes les offres
-* Une page pour créer une nouvelle offre
-* Une page pour mettre à jour une offre existante
-* Une page pour supprimer une offre
-
-Bien que le code soit prêt à être utilisé tel quel, nous devons modifier les modèles pour correspondre à notre maquette Jobeet.
+Si vous cliquez sur une offre sur la page d'accueil Jobeet, l'URL ressemble à ceci : /job/1/show. Si vous avez déjà développé des sites web PHP, vous êtes probablement plus habitués à des URL comme /job.php?id=1. Comment Symfony les fait fonctionner? Comment Symfony détermine l'action à appeler à partir de cette URL ? Pourquoi l'id de l'offre est-il récupéré avec le paramètre $id dans l'action ? Ici, nous allons répondre à toutes ces questions.
 
 # Tutoriel
-http://blog.erlem.fr/programmation/developpement-web/framework/40-symfony/103-symfony2-jobeet-jour-04-le-controleur-et-la-vue
+http://blog.erlem.fr/programmation/developpement-web/framework/40-symfony/104-symfony2-jobeet-jour-05-le-routage
