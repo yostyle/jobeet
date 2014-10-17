@@ -1,5 +1,6 @@
 Erlem\JobeetBundle\Entity\Category:
     type: entity
+    repositoryClass: Erlem\JobeetBundle\Repository\CategoryRepository
     table: category
     id:
         id:

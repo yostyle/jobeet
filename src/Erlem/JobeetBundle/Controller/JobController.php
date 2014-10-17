@@ -22,11 +22,15 @@ class JobController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('ErlemJobeetBundle:Job')->findAll();
-
+ 
+        $categories = $em->getRepository('ErlemJobeetBundle:Category')->getWithJobs();
+ 
+        foreach($categories as $category) {
+            $category->setActiveJobs($em->getRepository('ErlemJobeetBundle:Job')->getActiveJobs($category->getId(), $this->container->getParameter('max_jobs_on_homepage')));
+        }
+ 
         return $this->render('ErlemJobeetBundle:Job:index.html.twig', array(
-            'entities' => $entities,
+            'categories' => $categories
         ));
     }
     /**
@@ -95,7 +99,7 @@ class JobController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ErlemJobeetBundle:Job')->find($id);
+        $entity = $em->getRepository('ErlemJobeetBundle:Job')->getActiveJob($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Job entity.');

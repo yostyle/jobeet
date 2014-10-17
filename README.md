@@ -1,7 +1,7 @@
-Symfony2 - Jobeet - Jour 05 - Le Routage
+Symfony2 - Jobeet - Jour 06 - Aller plus loin avec le Modèle
 ========================
 
-Si vous cliquez sur une offre sur la page d'accueil Jobeet, l'URL ressemble à ceci : /job/1/show. Si vous avez déjà développé des sites web PHP, vous êtes probablement plus habitués à des URL comme /job.php?id=1. Comment Symfony les fait fonctionner? Comment Symfony détermine l'action à appeler à partir de cette URL ? Pourquoi l'id de l'offre est-il récupéré avec le paramètre $id dans l'action ? Ici, nous allons répondre à toutes ces questions.
+Pour la deuxième story : "Sur la page d'accueil, l'utilisateur voit les dernières offres actives." Mais actuellement, toutes les offres sont affichées, qu'elles soient actives ou non.
 
 # Tutoriel
-http://blog.erlem.fr/programmation/developpement-web/framework/40-symfony/104-symfony2-jobeet-jour-05-le-routage
+http://blog.erlem.fr/programmation/developpement-web/framework/40-symfony/105-symfony2-jobeet-jour-06-aller-plus-loin-avec-le-modele
