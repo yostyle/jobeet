@@ -1,9 +1,9 @@
 <?php
 
 namespace Erlem\JobeetBundle\Repository;
- 
+
 use Doctrine\ORM\EntityRepository;
- 
+
 /**
  * CategoryRepository
  *

@@ -8,7 +8,7 @@ use Erlem\JobeetBundle\Entity\Job;
 
 class LoadJobData extends AbstractFixture implements OrderedFixtureInterface
 {
-     public function load(ObjectManager $em)
+    public function load(ObjectManager $em)
     {
         $job_expired = new Job();
         $job_expired->setCategory($em->merge($this->getReference('category-programming')));
@@ -72,7 +72,7 @@ class LoadJobData extends AbstractFixture implements OrderedFixtureInterface
             $job->setEmail('job[at]example.com');
      
             $em->persist($job);
-        }
+        }        
  
         $em->persist($job_sensio_labs);
         $em->persist($job_extreme_sensio);

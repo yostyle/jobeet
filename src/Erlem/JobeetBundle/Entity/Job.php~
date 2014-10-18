@@ -491,21 +491,24 @@ class Job
     {
         $this->updated_at = new \DateTime();
     }
-    
+
+    // ...
     public function getCompanySlug()
     {
         return Jobeet::slugify($this->getCompany());
     }
- 
+
     public function getPositionSlug()
     {
         return Jobeet::slugify($this->getPosition());
     }
- 
+
     public function getLocationSlug()
     {
         return Jobeet::slugify($this->getLocation());
     }  
+    // ...
+
 
     /**
      * @ORM\PrePersist

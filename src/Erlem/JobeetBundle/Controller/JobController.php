@@ -22,13 +22,15 @@ class JobController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
- 
+     
         $categories = $em->getRepository('ErlemJobeetBundle:Category')->getWithJobs();
- 
-        foreach($categories as $category) {
+     
+        foreach($categories as $category)
+        {
             $category->setActiveJobs($em->getRepository('ErlemJobeetBundle:Job')->getActiveJobs($category->getId(), $this->container->getParameter('max_jobs_on_homepage')));
+            $category->setMoreJobs($em->getRepository('ErlemJobeetBundle:Job')->countActiveJobs($category->getId()) - $this->container->getParameter('max_jobs_on_homepage'));
         }
- 
+     
         return $this->render('ErlemJobeetBundle:Job:index.html.twig', array(
             'categories' => $categories
         ));

@@ -11,6 +11,10 @@ Erlem\JobeetBundle\Entity\Category:
             type: string
             length: 255
             unique: true
+        slug:
+            type: string
+            length: 255
+            unique: true
     oneToMany:
         jobs:
             targetEntity: Job
@@ -19,3 +23,6 @@ Erlem\JobeetBundle\Entity\Category:
         affiliates:
             targetEntity: Affiliate
             mappedBy: categories
+    lifecycleCallbacks:
+        prePersist: [ setSlugValue ]
+        preUpdate: [ setSlugValue ]

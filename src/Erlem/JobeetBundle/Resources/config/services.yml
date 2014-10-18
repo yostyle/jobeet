@@ -1,4 +1,7 @@
+parameters:
+#    erlem_jobeet.example.class: Erlem\JobeetBundle\Example
+
 services:
 #    erlem_jobeet.example:
-#        class: Erlem\JobeetBundle\Example
+#        class: %erlem_jobeet.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

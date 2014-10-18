@@ -1,7 +1,11 @@
 erlem_jobeet_homepage:
     pattern:  /
     defaults: { _controller: ErlemJobeetBundle:Job:index }
- 
+
 ErlemJobeetBundle_job:
     resource: "@ErlemJobeetBundle/Resources/config/routing/job.yml"
     prefix:   /job
+
+ErlemJobeetBundle_category:
+    pattern: /category/{slug}/{page}
+    defaults: { _controller: ErlemJobeetBundle:Category:show, page: 1 }

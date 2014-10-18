@@ -1,7 +1,7 @@
-Symfony2 - Jobeet - Jour 06 - Aller plus loin avec le Modèle
+Symfony2 - Jobeet - Jour 07 - Jouons avec la page Catégorie
 ========================
 
-Pour la deuxième story : "Sur la page d'accueil, l'utilisateur voit les dernières offres actives." Mais actuellement, toutes les offres sont affichées, qu'elles soient actives ou non.
+Aujourd'hui, nous allons faire la page de catégorie, comme il est décrit dans la story du 2ème jour (Symfony2 - Jobeet - Jour 02 - Le projet) : "L'utilisateur voit une liste de toutes les offres d'emploi de la catégorie triées par date et paginée avec 20 emplois par page".
 
 # Tutoriel
-http://blog.erlem.fr/programmation/developpement-web/framework/40-symfony/105-symfony2-jobeet-jour-06-aller-plus-loin-avec-le-modele
+http://blog.erlem.fr/programmation/developpement-web/framework/40-symfony/106-symfony2-jobeet-jour-07-jouons-avec-la-page-categorie
