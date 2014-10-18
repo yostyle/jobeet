@@ -8,6 +8,12 @@ erlem_job_show:
     requirements:
         id:  \d+
 
+erlem_job_preview:
+    pattern:  /{company}/{location}/{token}/{position}
+    defaults: { _controller: "ErlemJobeetBundle:Job:preview" }
+    requirements:
+        token:  \w+
+
 erlem_job_new:
     path:     /new
     defaults: { _controller: "ErlemJobeetBundle:Job:new" }
@@ -18,15 +24,20 @@ erlem_job_create:
     requirements: { _method: post }
 
 erlem_job_edit:
-    path:     /{id}/edit
+    pattern:  /{token}/edit
     defaults: { _controller: "ErlemJobeetBundle:Job:edit" }
 
 erlem_job_update:
-    path:     /{id}/update
+    pattern:  /{token}/update
     defaults: { _controller: "ErlemJobeetBundle:Job:update" }
     requirements: { _method: post|put }
 
 erlem_job_delete:
-    path:     /{id}/delete
+    pattern:  /{token}/delete
     defaults: { _controller: "ErlemJobeetBundle:Job:delete" }
     requirements: { _method: post|delete }
+
+erlem_job_publish:
+    pattern:  /{token}/publish
+    defaults: { _controller: "ErlemJobeetBundle:Job:publish" }
+    requirements: { _method: post }
