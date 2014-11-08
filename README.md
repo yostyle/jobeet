@@ -39,7 +39,7 @@ Le tutoriel utilise la **version 2.5 de Symfony**.
 Le tutoriel original est le [tutoriel Symfony2 Jobeet](http://www.intelligentbee.com/blog/2013/08/07/symfony2-jobeet-day-1-starting-up-the-project/) du site IntelligentBee. J'ai bien entendu suivi le [tutoriel Jobeet](http://symfony.com/legacy/doc/jobeet?orm=Doctrine) original créé par [Fabien Potencier](http://fabien.potencier.org/) pour Symfony 1.4 et la traduction de [Jonathan Thuau.](http://jobeet.thuau.fr/sommaire) Selon les sources citées, des parties ont été remaniées pour coller à la nouvelle version de Symfony.
 
 # Tutoriel
-http://blog.erlem.fr/programmation/developpement-web/framework/40-symfony/99-symfony2-jobeet
+http://blog.erlem.fr/symfony2/jobeet
 
 #Licence
 Ce travail est autorisé en vertu de la licence [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/).
