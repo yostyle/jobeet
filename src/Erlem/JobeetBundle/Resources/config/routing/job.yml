@@ -41,3 +41,8 @@ erlem_job_publish:
     pattern:  /{token}/publish
     defaults: { _controller: "ErlemJobeetBundle:Job:publish" }
     requirements: { _method: post }
+
+erlem_job_extend:
+    pattern:  /{token}/extend
+    defaults: { _controller: "ErlemJobeetBundle:Job:extend" }
+    requirements: { _method: post }
