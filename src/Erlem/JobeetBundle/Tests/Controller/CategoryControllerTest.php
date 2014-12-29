@@ -81,7 +81,7 @@ class CategoryControllerTest extends WebTestCase
  
         // categories on homepage are clickable
         foreach($categories as $category) {
-            $crawler = $client->request('GET', '/');
+            $crawler = $client->request('GET', '/en/');
  
             $link = $crawler->selectLink($category->getName())->link();
             $crawler = $client->click($link);
@@ -93,7 +93,7 @@ class CategoryControllerTest extends WebTestCase
  
             // categories with more than $max_jobs_on_homepage jobs also have a "more" link                 
             if($jobs_no > $max_jobs_on_homepage) {
-                $crawler = $client->request('GET', '/');
+                $crawler = $client->request('GET', '/en/');
                 $link = $crawler->filter(".category_" . $category->getSlug() . " .more_jobs a")->link();
                 $crawler = $client->click($link);
  
@@ -117,7 +117,7 @@ class CategoryControllerTest extends WebTestCase
                     $this->assertEquals('Erlem\JobeetBundle\Controller\CategoryController::showAction', $client->getRequest()->attributes->get('_controller'));
                     $this->assertEquals($i, $client->getRequest()->attributes->get('page'));
                     $this->assertTrue($crawler->filter('.jobs tr')->count() <= $max_jobs_on_category);
-                    if($jobs_no >1) {
+                    if($jobs_no > 1) {
                         $this->assertRegExp("/" . $jobs_no . " jobs/", $crawler->filter('.pagination_desc')->text());
                     }
                     $this->assertRegExp("/page " . $i . "\/" . $pages . "/", $crawler->filter('.pagination_desc')->text());

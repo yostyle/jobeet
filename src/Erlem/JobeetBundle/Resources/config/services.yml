@@ -19,3 +19,12 @@ services:
             - ~
             - Erlem\JobeetBundle\Entity\Job
             - 'ErlemJobeetBundle:JobAdmin'
+
+    erlem.jobeet.admin.affiliate:
+        class: Erlem\JobeetBundle\Admin\AffiliateAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: jobeet, label: Affiliates }
+        arguments:
+            - ~
+            - Erlem\JobeetBundle\Entity\Affiliate
+            - 'ErlemJobeetBundle:AffiliateAdmin'

@@ -46,3 +46,7 @@ erlem_job_extend:
     pattern:  /{token}/extend
     defaults: { _controller: "ErlemJobeetBundle:Job:extend" }
     requirements: { _method: post }
+
+erlem_job_search:
+    pattern: /search
+    defaults: { _controller: "ErlemJobeetBundle:Job:search" }

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Erlem\JobeetBundle\Entity\Job;
 use Erlem\JobeetBundle\Form\JobType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Job controller.
@@ -21,6 +22,12 @@ class JobController extends Controller
      */
     public function indexAction()
     {
+        $request = $this->getRequest();
+ 
+        if($request->get('_route') == 'ErlemJobeetBundle_nonlocalized') {
+            return $this->redirect($this->generateUrl('erlem_jobeet_homepage'));
+        }
+ 
         $em = $this->getDoctrine()->getManager();
      
         $categories = $em->getRepository('ErlemJobeetBundle:Category')->getWithJobs();
@@ -31,8 +38,20 @@ class JobController extends Controller
             $category->setMoreJobs($em->getRepository('ErlemJobeetBundle:Job')->countActiveJobs($category->getId()) - $this->container->getParameter('max_jobs_on_homepage'));
         }
      
-        return $this->render('ErlemJobeetBundle:Job:index.html.twig', array(
-            'categories' => $categories
+        $latestJob = $em->getRepository('ErlemJobeetBundle:Job')->getLatestPost();
+ 
+        if($latestJob) {
+            $lastUpdated = $latestJob->getCreatedAt()->format(DATE_ATOM);
+        } else {
+            $lastUpdated = new \DateTime();
+            $lastUpdated = $lastUpdated->format(DATE_ATOM);
+        }
+ 
+        $format = $this->getRequest()->getRequestFormat();
+        return $this->render('ErlemJobeetBundle:Job:index.'.$format.'.twig', array(
+               'categories' => $categories,
+               'lastUpdated' => $lastUpdated,
+               'feedId' => sha1($this->get('router')->generate('erlem_job', array('_format'=> 'atom'), true)),
         ));
     }
     /**
@@ -107,15 +126,31 @@ class JobController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
+     
         $entity = $em->getRepository('ErlemJobeetBundle:Job')->getActiveJob($id);
-
+     
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Job entity.');
         }
-
+     
+        $session = $this->getRequest()->getSession();
+     
+        // fetch jobs already stored in the job history
+        $jobs = $session->get('job_history', array());
+     
+        // store the job as an array so we can put it in the session and avoid entity serialize errors
+        $job = array('id' => $entity->getId(), 'position' =>$entity->getPosition(), 'company' => $entity->getCompany(), 'companyslug' => $entity->getCompanySlug(), 'locationslug' => $entity->getLocationSlug(), 'positionslug' => $entity->getPositionSlug());
+     
+        if (!in_array($job, $jobs)) {
+            // add the current job at the beginning of the array
+            array_unshift($jobs, $job);
+     
+            // store the new job history back into the session
+            $session->set('job_history', array_slice($jobs, 0, 3));
+        }
+     
         $deleteForm = $this->createDeleteForm($id);
-
+     
         return $this->render('ErlemJobeetBundle:Job:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
@@ -341,5 +376,31 @@ class JobController extends Controller
             ->add('token', 'hidden')
             ->getForm();
     }
+
+    public function searchAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $query = $this->getRequest()->get('query');
+     
+        if(!$query) {
+            if(!$request->isXmlHttpRequest()) {
+                return $this->redirect($this->generateUrl('erlem_job'));
+            } else {
+                return new Response('No results.');
+            }
+        }
+     
+        $jobs = $em->getRepository('ErlemJobeetBundle:Job')->getForLuceneQuery($query);
+     
+        if($request->isXmlHttpRequest()) {
+            if('*' == $query || !$jobs || $query == '') {
+                return new Response('No results.');
+            }
+     
+            return $this->render('ErlemJobeetBundle:Job:list.html.twig', array('jobs' => $jobs));
+        }
+     
+        return $this->render('ErlemJobeetBundle:Job:search.html.twig', array('jobs' => $jobs));
+    } 
 
 }
